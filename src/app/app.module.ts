@@ -23,6 +23,8 @@ import { EquipoService} from './equipo.service';
 import { ListaComponent } from './components/lista/lista.component';
 import { ListaAddComponent } from './components/lista-add/lista-add.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ModalModule } from 'ngx-bootstrap';
+
 
 //Rutas
 const routes: Routes = [
@@ -53,6 +55,7 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     NgbModule,
+    ModalModule.forRoot(),
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features

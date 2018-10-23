@@ -5,37 +5,24 @@ Lista
     <div class="flotat-rigth" (click)="eliminar(item.id)">
       <i class="far fa-trash-alt"></i>
     </div>
-    <div class="flotat-rigth" (click)="modificarItem(item)" data-toggle="modal" data-target="#exampleModal">
+    <div class="flotat-rigth" (click)="openModal(template,item)">
       <i class="fas fa-pencil-alt"></i>
     </div>
 </div> 
 
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Editar: {{editarItem.name}}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-          <form (ngSubmit)="agregarItemEditado()">
-              <input 
+ 
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Editar nombre </h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <input 
                 type="text" placeholder="ingresa tu nombre"
                 name="name" class=form-control 
                 [(ngModel)]="editarItem.name">
-              <button class="btn btn-warning mt-3" type="submit">Actualizar item</button>
-              
-            </form>
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+  <button type="button" class="btn btn-default" (click)="agregarItemEditado() " >Modificar</button>
+  <button type="button" class="btn btn-primary" (click)="decline()" >Cancelar</button>
+                              
+</ng-template>
